@@ -7,7 +7,7 @@ function App() {
 
   for (let i = 0; i < n; i++) {
     // Offset is the width of the box for each subsequent row
-    const duration = (n / (n - i)) * 1;
+    const duration = n / (n - i);
 
     rows.push(
       <div key={i} className='row' style={{'width': `${n * 50}px`}}>
@@ -23,7 +23,7 @@ function App() {
     window.addEventListener('load', () => {
       // Add event listener for each collision
       document.getElementById(`box_${i}`).addEventListener('animationiteration', (e) => {
-        const audio = new Audio(wavs[`pl_${n - i}`]);
+        const audio = new Audio(wavs[`pl_${n - (i + 1)}`]);
         audio.volume = 0.25;
         audio.play();
       });
